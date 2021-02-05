@@ -1,0 +1,278 @@
+.container {
+    overflow: hidden auto;
+    padding: 100px 50px 50px 50px
+}
+ 
+
+.extra-data, .form, .save, .login {
+  z-index: 1;
+} 
+
+.picture img {
+  width: 100%;
+  border-radius: 100px;
+  cursor: pointer;
+  border: 3px solid #ffffff;
+}
+
+.title {
+  font-weight: 700;
+}
+
+.add-more-info-description {
+  width: 80%;
+  margin: 10px auto;
+  text-align: center;
+  font-size: 13px;
+}
+
+.picture {
+  width: 100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.picture span {
+  bottom: 0;
+  background: #00BCD4;
+    color: #ffffff;
+  font-size: 10px;
+  padding: 5px 10px;
+  border-radius: 100px;
+  cursor: pointer;
+  margin: 0px auto 10px auto;
+  display: table;
+}
+
+.action-buttons{
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.data-field div {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 50px 100px;
+  margin-bottom: 20px;
+  grid-gap: 10px;
+}
+
+.data-field div input, .data-field div textarea {
+  padding: 20px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
+.form h3 {
+    text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.add-data {
+  margin-bottom: 10px;
+  background: #ffaa4d;
+}
+
+.close {
+  position: absolute;
+  z-index: 999999;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  right: 10px;
+  top: 10px;
+  background: gray;
+  padding: 3px 10px 7px 10px;
+  line-height: 23px;
+}
+
+.picture-open {
+  background-position: center center !important;
+  background-size: cover !important;
+  position: fixed;
+  top: 40px;
+  left: 40px;
+  width: calc(100vw - 80px);
+  height: calc(100vh - 80px);
+  z-index: 999;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background: #0e0e0e70;
+}
+
+.picture-open img {
+  width: 100%;
+}
+
+input {
+    outline: none;
+}
+
+button {
+  outline: none;
+  background: #ce84b5;
+  color: white;
+  border: none;
+  margin: 0 auto !important; 
+  padding: 10px 20px;
+  display: block;
+  cursor: pointer;
+  border-radius: 20px;
+  box-shadow: 0px 0px 4px 2px rgb(0 0 0 / 10%);
+}
+
+button:active, .picture img:active, .picture span:active {
+  transform: scale(.9)
+}
+
+.input-group {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 82px;
+    border: 0;
+    background-color: #ffffff;
+    border-bottom-left-radius: 41px;
+    border-bottom-right-radius: 41px;
+    border-top-left-radius: 41px;
+    border-top-right-radius: 0;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 22px;
+    position: relative;
+    font-size: 17px;
+    cursor: pointer;
+    color: #a7b4c1;
+    transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out,
+      box-shadow 0.1s ease-in-out;
+  }
+  
+  .input-group:hover {
+    box-shadow: 0 14px 44px 0 rgba(0, 0, 0, 0.077);
+  }
+  
+  .input-group input {
+    position: absolute;
+    border: 0;
+    box-shadow: none;
+    background-color: rgba(255, 255, 255, 0);
+    top: 0;
+    height: 65px;
+    width: 100%;
+    padding: 0 53px;
+    box-sizing: border-box;
+    z-index: 3;
+    display: block;
+    color: #3b3b3b;
+    font-size: 17px;
+    transition: top 0.1s ease-in-out;
+  }
+  
+  .input-group input::placeholder {
+    color: rgba(0, 0, 0, 0);
+  }
+  
+  .input-group input:focus,
+  .input-group input:not(:placeholder-shown) {
+    top: 20px;
+  }
+  
+  .input-group label {
+    position: absolute;
+    border: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    padding: 0 53px;
+    box-sizing: border-box;
+    transition: all 0.1s ease-in-out;
+    cursor: text;
+  }
+  
+  .input-group input:focus + label,
+  .input-group input:not(:placeholder-shown) + label {
+    bottom: 30px;
+    font-size: 16px;
+    opacity: 0.7;
+  }
+  
+  .req-mark {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    right: 33px;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 22px;
+    color: #e0e0e0;
+  }
+
+  .checkbox-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 11px 20px 20px;
+    border: 1px solid #969695;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+.welcoming{
+  width: 300px;
+  height: 300px;
+  margin: -40px auto 20px auto;
+  text-align: center;
+}
+
+.welcoming img {
+    width: 100%;
+}
+
+.data-field {
+  position: relative;
+}
+
+.delete {
+  position: absolute;
+  right: -7px;
+  background: #f58d4e;
+  height: 23px;
+  width: 25px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 10px;
+  color: white;
+}
+
+.whatsapp, .goto-instagram {
+  text-align: center;
+    background: #14bab3;
+    border-radius: 20px;
+    padding: 10px 20px;
+    display: table;
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.1);
+    margin: 10px auto 20px auto;
+}
+
+.goto-instagram{
+  background: #32c1ba;
+}
+
+.whatsapp a, .goto-instagram a {
+  text-decoration: none;
+  color: #ffffff;
+}
+  
+@media (max-width:768px) { 
+    
+}

@@ -1,0 +1,108 @@
+<div class="container" *ngIf="client">
+    <div class="form" *ngIf="loggedUser || publicView">
+        <div class="picture">
+            <img *ngIf="client.picture && !uploading" (click)="pictureOpened = true" [src]="client?.picture" alt="mi foto">
+            <img *ngIf="!client.picture && !uploading" src="assets/img/pet-placeholder.png" alt="mi foto">
+            <span *ngIf="!uploading && !publicView" (click)="setIMage()">{{ client.picture ? 'cambiar' : 'subir imagen' }}</span>
+            <span *ngIf="uploading">Subiendo imagen...</span>
+            <input class="hidden" type="file" (change)="upload($event)" accept=".png,.jpg" />
+        </div>
+        <h2>Hola extraño 😳... <br>
+            <span> Te presento mis datos! </span>
+        </h2>
+        <div class="input-group">
+            <input [disabled]="publicView" class="form-control" type="text" id="dogName" [(ngModel)]="client.dogName"
+                placeholder="_">
+            <label for="dogName"> 🐶 Mis padres me llamaron:</label>
+            <div class="req-mark">!</div>
+        </div>
+        <div class="input-group">
+            <input [disabled]="publicView" class="form-control" type="text" id="dogAge" [(ngModel)]="client.dogAge"
+                placeholder="_">
+            <label for="dogAge"> 👶 que edad tengo?:</label>
+            <div class="req-mark">!</div>
+        </div>
+        <div class="input-group">
+            <input [disabled]="publicView" class="form-control" type="text" id="ownerName" [(ngModel)]="client.ownerName"
+                placeholder="_">
+            <label for="ownerName"> 👽 Mi humano se llama:</label>
+            <div class="req-mark">!</div>
+        </div>
+        <div class="checkbox-input"  *ngIf="!publicView">
+            Quiero mostrar mi dirección en el pefíl de mi mascota
+            <input type="checkbox" [checked]="client.client"
+            [(ngModel)]="client.clientShowAddress">
+        </div>
+        <div class="input-group" *ngIf="client.clientShowAddress && publicView || !publicView">
+            <input [disabled]="publicView" class="form-control" type="text" id="ownerAddres" [(ngModel)]="client.ownerAddres"
+                placeholder="_">
+            <label for="ownerAddres"> 🏠 Dirección de mi hogar:</label>
+            <div class="req-mark">!</div>
+        </div>
+        <div class="input-group">
+            <input [disabled]="true" class="form-control" type="text" id="email"
+                [(ngModel)]="client.email" placeholder="_">
+            <label for="email"> 📧 Este es mi correo: </label>
+            <div class="req-mark">!</div>
+        </div>
+        <div class="input-group">
+            <input [disabled]="publicView" class="form-control" type="text" id="phone" [(ngModel)]="client.phone" placeholder="_">
+            <label for="phone"> ... y este es mi teléfono 😛: </label>
+            <div class="req-mark">!</div>
+        </div>
+        <div class="whatsapp" *ngIf="client.phone">
+            <a target="_blank" href="{{ 'https://api.whatsapp.com/send?text=Hola, encontré a '+client.dogName+'&phone='+client.phone }}">Contactame al whatsapp</a>
+        </div>
+        <div class="input-group">
+            <input [disabled]="publicView" class="form-control" type="text" id="instagram" [(ngModel)]="client.instagram" placeholder="_">
+            <label for="instagram"> Ah, y aquí mi instagram 📸: </label>
+            <div class="req-mark">!</div>
+        </div>
+        
+        <div class="goto-instagram" *ngIf="client.instagram">
+            <a target="_blank" href="{{ 'https://instagram.com/'+ removeAt(client.instagram) }}">Ir a mi instagram 😊</a>
+        </div>
+    </div>
+    <br><br>
+    <div class="extra-data">
+        <h2 *ngIf="(publicView && client.extraData && client.extraData.length) || loggedUser">
+            Un poco más sobre mi 😎...
+        </h2>
+        <div class="add-more-info-description" *ngIf="loggedUser && !publicView">
+            Aquí puedes agregar información personalizada sobre tu mascota. Ejemplo: <br>
+            <b>Titulo:</b> Soy alérgico... <br>
+            <b>Descripción:</b> Al chocolate 😷
+        </div>
+        <br>
+        <button *ngIf="!publicView && loggedUser" class="add-data" (click)="addDogInfo()">
+            Agregar un campo de información
+        </button>
+        <br>
+        <span *ngIf="publicView || (!publicView && loggedUser)">
+            <div class="data-field" *ngFor="let ed of client.extraData; let edIndex = index">
+                <div *ngIf="loggedUser && !publicView" class="delete" (click)="removeDogInfo(edIndex)">x</div>
+                <div>
+                    <input class="title" [disabled]="publicView" type="text" name="title" [(ngModel)]="client.extraData[edIndex].title" placeholder="Título">
+                    <textarea class="description" [disabled]="publicView" type="text" name="description" [(ngModel)]="client.extraData[edIndex].description"
+                        placeholder="Descripción">
+                    </textarea>
+                </div>
+            </div>
+        </span>
+        <br>
+    </div>
+    <button *ngIf="loggedUser && !publicView" class="save" (click)="save()"> Guardar mi info </button>
+    <br><br>
+    <div class="login-view" *ngIf="!loggedUser && !publicView">
+        <div class="welcoming">
+            <img src="assets/img/login-img.png" alt="welcoming">
+        </div>
+        <button class="login" (click)="login()"> Entrar con Google </button>
+    </div>
+    <button *ngIf="loggedUser  && !publicView" class="login" (click)="logout()"> Cerrar sesión </button>
+</div>
+
+<div *ngIf="client && pictureOpened && !uploading" class="picture-open"
+    [ngStyle]="{'background': 'url('+client.picture+')' }">
+    <div class="close" (click)="pictureOpened = false"> x </div> 
+</div>
