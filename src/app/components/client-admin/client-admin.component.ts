@@ -58,12 +58,14 @@ export class ClientAdminComponent implements OnInit {
     this.cs.getClient(clientName).subscribe(clients => {
       this.auth.onAuthStateChanged((user: any) => {
         this.client = clients[0];
-        if ( !this.client ) { return }
+        if ( !this.client ) { return this.router.navigate([ 'd/home' ]) }
         if ( !this.client.extraData || !this.client.extraData.length ) { this.client.extraData = [] }
         this.ts.setTitle(`${ this.client.nameId ? `@${ this.client.nameId } - ` : '' }Mi amispet ❤️`);
         this.loggedUser = user
+        console.log(clients, user)
         if ( !this.loggedUser ) { return; }
         if ( this.client && this.client.email !== this.loggedUser.email ) {
+          this.logout()
           return this.router.navigate([ 'd/home' ])
         }
       })
